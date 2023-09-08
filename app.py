@@ -6,7 +6,10 @@ from resource.endpoints import bio
 app = Flask(__name__)
 api = Api(app)
 
+
+
 api.add_resource(bio, "/", "/bio")
+
 
 
 if __name__ == "__main__":

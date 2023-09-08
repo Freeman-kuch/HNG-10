@@ -1,20 +1,37 @@
-from distutils.command.build_scripts import first_line_re
-from flask_restful import Resource, fields, marshal_with
+from flask_restful import Resource, fields, marshal_with, reqparse
+import datetime
+import json
+
+parser = reqparse.RequestParser()
+parser.add_argument('slack_name', type=str, help='slack_name', location="args")
+parser.add_argument('track', type=str, help='track', location="args")
+
+
 
 bio_fields = {
-    "SlackUsername": fields.String,
-    "backend": fields.Boolean,
-    "Age": fields.Integer,
-    "Bio": fields.String
+            "Slack Name": fields.String,
+            "Current Day of the Week":  fields.String,
+            "Current UTC Time": fields.String,
+            "Track": fields.String,
+            "GitHub File URL": fields.String,
+            "GitHub Repo URL": fields.String,
+            "Status Code": fields.Integer,
 }
 
 
 class bio(Resource):
     @marshal_with(bio_fields, envelope="My Bio")
     def get(self):
-        return {
-            "SlackUsername": "Freeman",
-            "backend": True,
-            "Age": 24,
-            "Bio": "I'm  a Backend engineer from Lagos, Nigeria. I am  always willing and ready to learn and add value to the community",
+
+        args = parser.parse_args()
+
+        data = {
+            "Slack Name": args.get("slack_name"),
+            "Current Day of the Week":  datetime.datetime.utcnow().strftime('%A'),
+            "Current UTC Time": datetime.datetime.utcnow(),
+            "Track": args.get("track"),
+            "GitHub File URL": "",
+            "GitHub Repo URL": "",
+            "Status Code": 200,
         }
+        return data
