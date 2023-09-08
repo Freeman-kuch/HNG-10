@@ -30,8 +30,8 @@ class bio(Resource):
             "Current Day of the Week":  datetime.datetime.utcnow().strftime('%A'),
             "Current UTC Time": datetime.datetime.utcnow(),
             "Track": args.get("track"),
-            "GitHub File URL": "",
-            "GitHub Repo URL": "",
+            "GitHub File URL": "https://github.com/Freeman-kuch/HNG-10/blob/main/app.py",
+            "GitHub Repo URL": "https://github.com/Freeman-kuch/HNG-10",
             "Status Code": 200,
         }
         return data
