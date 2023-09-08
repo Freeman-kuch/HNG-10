@@ -20,18 +20,24 @@ bio_fields = {
 
 
 class bio(Resource):
-    @marshal_with(bio_fields, envelope="My Bio")
+    @marshal_with(bio_fields)
     def get(self):
 
         args = parser.parse_args()
 
+
+        time = datetime.datetime.utcnow()
+        day = time.strftime('%A')
+
+
+
         data = {
             "Slack Name": args.get("slack_name"),
-            "Current Day of the Week":  datetime.datetime.utcnow().strftime('%A'),
-            "Current UTC Time": datetime.datetime.utcnow(),
+            "Current Day of the Week":  str(day),
+            "Current UTC Time": str(time),
             "Track": args.get("track"),
             "GitHub File URL": "https://github.com/Freeman-kuch/HNG-10/blob/main/app.py",
             "GitHub Repo URL": "https://github.com/Freeman-kuch/HNG-10",
             "Status Code": 200,
         }
-        return data
+        return data, 200
