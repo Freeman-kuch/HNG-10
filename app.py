@@ -8,7 +8,7 @@ api = Api(app)
 
 
 
-api.add_resource(bio, "/", "/bio")
+api.add_resource(bio, "/api")
 
 
 
