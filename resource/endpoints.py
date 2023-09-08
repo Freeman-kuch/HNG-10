@@ -26,7 +26,7 @@ class bio(Resource):
         args = parser.parse_args()
 
 
-        time = datetime.datetime.utcnow()
+        time = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
         day = time.strftime('%A')
 
 
