@@ -9,13 +9,13 @@ parser.add_argument('track', type=str, help='track', location="args")
 
 
 bio_fields = {
-            "Slack Name": fields.String,
-            "Current Day of the Week":  fields.String,
-            "Current UTC Time": fields.String,
-            "Track": fields.String,
-            "GitHub File URL": fields.String,
-            "GitHub Repo URL": fields.String,
-            "Status Code": fields.Integer,
+            "slack_name": fields.String,
+            "current_day":  fields.String,
+            "utc_time": fields.String,
+            "track": fields.String,
+            "github_file_url": fields.String,
+            "github_repo_url": fields.String,
+            "status_code": fields.Integer,
 }
 
 
@@ -32,12 +32,12 @@ class bio(Resource):
 
 
         data = {
-            "Slack Name": args.get("slack_name"),
-            "Current Day of the Week":  str(day),
-            "Current UTC Time": str(time),
-            "Track": args.get("track"),
-            "GitHub File URL": "https://github.com/Freeman-kuch/HNG-10/blob/main/app.py",
-            "GitHub Repo URL": "https://github.com/Freeman-kuch/HNG-10",
-            "Status Code": 200,
+            "slack_name": args.get("slack_name"),
+            "current_day":  str(day),
+            "utc_time": str(time),
+            "track": args.get("track"),
+            "github_file_url": "https://github.com/Freeman-kuch/HNG-10/blob/main/app.py",
+            "github_repo_url": "https://github.com/Freeman-kuch/HNG-10",
+            "status_code": 200,
         }
         return data, 200
