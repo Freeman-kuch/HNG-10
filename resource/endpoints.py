@@ -27,7 +27,7 @@ class bio(Resource):
 
 
         time = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-        day = time.strftime('%A')
+        day = datetime.datetime.utcnow().strftime('%A')
 
 
 
