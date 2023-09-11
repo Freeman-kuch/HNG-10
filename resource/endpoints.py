@@ -98,7 +98,7 @@ class stage_2(Resource):
 
         user.update_user()
 
-        return {"message": "item successfully Updated"}, 202
+        return {"message": "user successfully Updated"}, 202
 
 
     def delete(self, user_id: int) -> dict:
@@ -113,6 +113,6 @@ class stage_2(Resource):
         """
         delete_data = user.find_user_by_id(user_id)
         user.delete_user(delete_data)
-        return {"message": "item successfully deleted"}, 204
+        return {"message": "user successfully deleted"}, 200
 
 

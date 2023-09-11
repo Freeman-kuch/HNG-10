@@ -56,11 +56,45 @@ python 3.11.5 should be installed on your machine
 7. Open Postman, navigate to http://localhost:5000/, then you can test all endpoints with different methods like GET , POST
 
 ### usage
-CREATE: Adding a new person.  => http://localhost:5000//api
-READ: Fetching details of a person.  => http://localhost:5000//api/user_id
-UPDATE: Modifying details of an existing person => http://localhost:5000//api/user_id
-DELETE: Removing a person => http://localhost:5000//api/user_id
+CREATE: Adding a new person.  (http://localhost:5000/api)
+   #### METHOD: POST-> http://localhost:5000/api
+    ```BODY: {
+            "name": "test",
+            "user_id" : 1
+            "track": "backend",
+            "slack_username": "test",
+            "email": "test"
+                }
+        ```
+    ###  RESPONSE:  {"message": "new user successfully created"}
 
+READ: Fetching details of a person. (http://localhost:5000/api/<user_id>)
+### Method GET: http://localhost:5000/api/<1>
+### Response :    
+```{"user_data":{    
+            "name": "test",
+            "user_id" : 1
+            "track": "backend",
+            "slack_username": "test",
+            "email": "test"
+                }
+        }
+```
+UPDATE: Updating an existing person  (http://localhost:5000/api/<user_id>)
+    ### method PATCH : http://localhost:5000/api/1
+        ```BODY: {
+            "name": "test",
+            "user_id" : 1
+            "track": "backend",
+            "slack_username": "test",
+            "email": "test"
+                }
+        ```
+    Response : {"message": "user successfully Updated"}
+
+DELETE: Deleting an existing person   (http://localhost:5000/api/<user_id>)
+    ### Method DELETE: http://localhost:5000/api/<1>
+        Response : {"message": "user successfully deleted"}
 
 ### Folder structure
 ```
