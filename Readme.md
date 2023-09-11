@@ -57,7 +57,7 @@ python 3.11.5 should be installed on your machine
 
 ### usage
 CREATE: Adding a new person.  (http://localhost:5000/api)
-   #### METHOD: POST-> http://localhost:5000/api
+#### METHOD: POST-> http://localhost:5000/api
     ```BODY: {
             "name": "test",
             "user_id" : 1
@@ -65,12 +65,15 @@ CREATE: Adding a new person.  (http://localhost:5000/api)
             "slack_username": "test",
             "email": "test"
                 }
-        ```
-    ###  RESPONSE:  {"message": "new user successfully created"}
+    ```
+<br>
+RESPONSE:  {"message": "new user successfully created"}
+<br>
 
 READ: Fetching details of a person. (http://localhost:5000/api/<user_id>)
-### Method GET: http://localhost:5000/api/<1>
-### Response :    
+### Method GET: http://localhost:5000/api/1
+<br>
+RESPONSE :    
 ```{"user_data":{    
             "name": "test",
             "user_id" : 1
@@ -81,7 +84,7 @@ READ: Fetching details of a person. (http://localhost:5000/api/<user_id>)
         }
 ```
 UPDATE: Updating an existing person  (http://localhost:5000/api/<user_id>)
-    ### method PATCH : http://localhost:5000/api/1
+### Method PATCH : http://localhost:5000/api/1
         ```BODY: {
             "name": "test",
             "user_id" : 1
