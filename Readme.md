@@ -86,3 +86,20 @@ HNG-10/
 ```
 
 ### UML Diagram
+```
+--------------------------------------
+|               User                |
+--------------------------------------
+| - user_id: int                   |
+| - name: str                      |
+| - track: str                     |
+| - slack_username: str            |
+| - email: str                     |
+--------------------------------------
+| + find_user_by_id(user_id: int)  |
+| + find_user_by_name(name: str)   |
+| + add_user(user_data: User)      |
+| + update_user()                  |
+| + delete_user(user_data: User)   |
+--------------------------------------
+```
