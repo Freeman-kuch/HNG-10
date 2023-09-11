@@ -97,7 +97,6 @@ HNG-10/
 | - email: str                     |
 --------------------------------------
 | + find_user_by_id(user_id: int)  |
-| + find_user_by_name(name: str)   |
 | + add_user(user_data: User)      |
 | + update_user()                  |
 | + delete_user(user_data: User)   |

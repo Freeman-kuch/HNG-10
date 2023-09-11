@@ -1,6 +1,6 @@
 from db import db
 
-class User(db.Model):
+class user(db.Model):
     """
     Represents a model for a user in a database.
 
@@ -14,14 +14,14 @@ class User(db.Model):
 
     __tablename__ = 'user'
 
-    user_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(20), nullable=False, unique=True)
     track = db.Column(db.String(30), nullable=False)
-    slack_username = db.Column(db.String(30), nullable=False)
-    email = db.Column(db.String(50), nullable=False)
+    slack_username = db.Column(db.String(30), nullable=True)
+    email = db.Column(db.String(50), nullable=True)
 
     @classmethod
-    def find_user_by_id(cls, user_id: int) -> 'User':
+    def find_user_by_id(cls, user_id: int) -> 'user':
         """
         Finds a user by their ID and returns the user object.
 
@@ -36,24 +36,24 @@ class User(db.Model):
         """
         return cls.query.get_or_404(user_id)
 
+    # @classmethod
+    # def find_user_by_name(cls, name: str) -> 'user':
+    #     """
+    #     Finds a user by their name and returns the user object.
+
+    #     Args:
+    #         name (str): The name of the user to find.
+
+    #     Returns:
+    #         User: The user object.
+
+    #     Raises:
+    #         NotFound: If no user with the given name is found.
+    #     """
+    #     return cls.query.get_or_404(name)
+
     @classmethod
-    def find_user_by_name(cls, name: str) -> 'User':
-        """
-        Finds a user by their name and returns the user object.
-
-        Args:
-            name (str): The name of the user to find.
-
-        Returns:
-            User: The user object.
-
-        Raises:
-            NotFound: If no user with the given name is found.
-        """
-        return cls.query.get_or_404(name)
-
-    @classmethod
-    def add_user(cls, user_data: 'User') -> None:
+    def add_user(cls, user_data: 'user') -> None:
         """
         Adds a new user to the database.
 
@@ -63,14 +63,15 @@ class User(db.Model):
         db.session.add(user_data)
         db.session.commit()
 
-    def update_user(self) -> None:
+    @classmethod
+    def update_user(cls) -> None:
         """
         Commits any changes made to the user object in the database.
         """
         db.session.commit()
 
     @classmethod
-    def delete_user(cls, user_data: 'User') -> None:
+    def delete_user(cls, user_data: 'user') -> None:
         """
         Deletes a user from the database.
 
