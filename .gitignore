@@ -3,4 +3,4 @@ __pycache__/
 /.env
 /resource/config.py
 /test
-/railway.toml
+# /railway.toml

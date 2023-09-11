@@ -1,10 +1,12 @@
-from app import app
+from app import create_app
 from db import db  
-db.init_app(app)  
 
-def create():
-    return app
+app = create_app()
 
 
 if __name__ == "__main__":
+    from db import db
+    db.init_app(app)
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
