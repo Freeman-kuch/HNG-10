@@ -1,4 +1,4 @@
-.hng
+.hng/
 __pycache__/
 /.env
 /resource/config.py
