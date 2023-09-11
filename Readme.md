@@ -10,10 +10,10 @@ DELETE: Removing a person => /api/user_id
 
 - [Prerequisites](#prerequisites)
 - [Installation and Setup Instructions](#installation-and-setup-instructions)
-  - [Running the Application](#running-the-application)
+- [Running the Application](#running-the-application)
 - [Usage](#usage)
 - [Folder Structure](#folder-structure)
-- [UML Diagram](#UML Diagram)
+- [UML Diagram](#UML-Diagram)
 
 ## Prerequisites
 python 3.11.5 should be installed on your machine
@@ -40,7 +40,7 @@ python 3.11.5 should be installed on your machine
 
     ```shell
         <name_of_virtual_environment>\scripts\activate.bat
-        ```
+    ```
 
 5. Install the required dependencies:
 
