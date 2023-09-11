@@ -58,14 +58,14 @@ python 3.11.5 should be installed on your machine
 ### usage
 CREATE: Adding a new person.  (http://localhost:5000/api)
 #### METHOD: POST-> http://localhost:5000/api
-    ```BODY: {
-            "name": "test",
-            "user_id" : 1
-            "track": "backend",
-            "slack_username": "test",
-            "email": "test"
-                }
-    ```
+```BODY: {
+        "name": "test",
+        "user_id" : 1
+        "track": "backend",
+        "slack_username": "test",
+        "email": "test"
+            }
+```
 <br>
 RESPONSE:  {"message": "new user successfully created"}
 <br>
@@ -85,14 +85,14 @@ RESPONSE :
 ```
 UPDATE: Updating an existing person  (http://localhost:5000/api/<user_id>)
 ### Method PATCH : http://localhost:5000/api/1
-        ```BODY: {
-            "name": "test",
-            "user_id" : 1
-            "track": "backend",
-            "slack_username": "test",
-            "email": "test"
-                }
-        ```
+```BODY: {
+    "name": "test",
+    "user_id" : 1
+    "track": "backend",
+    "slack_username": "test",
+    "email": "test"
+        }
+```
     Response : {"message": "user successfully Updated"}
 
 DELETE: Deleting an existing person   (http://localhost:5000/api/<user_id>)
