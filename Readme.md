@@ -1,23 +1,22 @@
 # SIMPLE REST API
 
 ## Stage Two Task
-A REST API with Basic CRUD Operation
-CREATE: Adding a new person.  =>/api
-READ: Fetching details of a person.  => /api/user_id
-UPDATE: Modifying details of an existing person => /api/user_id
-DELETE: Removing a person => /api/user_id
-## Table of Contents
+A REST API with Basic CRUD Operations
+- **CREATE:** Adding a new person => `/api`
+- **READ:** Fetching details of a person => `/api/user_id`
+- **UPDATE:** Modifying details of an existing person => `/api/user_id`
+- **DELETE:** Removing a person => `/api/user_id`
 
+## Table of Contents
 - [Prerequisites](#prerequisites)
 - [Installation and Setup Instructions](#installation-and-setup-instructions)
 - [Running the Application](#running-the-application)
 - [Usage](#usage)
 - [Folder Structure](#folder-structure)
-- [UML Diagram](#UML-Diagram)
+- [UML Diagram](#uml-diagram)
 
 ## Prerequisites
-python 3.11.5 should be installed on your machine
-
+- Python 3.11.5 should be installed on your machine.
 
 ### Installation and Setup Instructions
 
@@ -27,80 +26,94 @@ python 3.11.5 should be installed on your machine
    git clone https://github.com/Freeman-kuch/HNG-10
    ```
 
-2. Navigate to the folder `cd HNG-10` in terminal or command line
+2. Navigate to the folder `cd HNG-10` in the terminal or command line:
+   ```shell
    cd HNG-10
+   ```
 
-3. create a virtual environment:
+3. Create a virtual environment:
 
-    ```shell
-    virtualenv venv --python=python3.11.5
-    ```
+   ```shell
+   virtualenv venv --python=python3.11.5
+   ```
 
 4. Activate your virtual environment:
 
-    ```shell
-        <name_of_virtual_environment>\scripts\activate.bat
-    ```
+   ```shell
+   <name_of_virtual_environment>\scripts\activate.bat
+   ```
 
 5. Install the required dependencies:
 
-    ```shell
-    pip install -r requirements.txt
-    ```
+   ```shell
+   pip install -r requirements.txt
+   ```
 
 6. Run the Flask app:
-    ```shell
-    flask run
-    ```
 
-7. Open Postman, navigate to http://localhost:5000/, then you can test all endpoints with different methods like GET , POST
+   ```shell
+   flask run
+   ```
 
-### usage
-CREATE: Adding a new person.  (http://localhost:5000/api)
-#### METHOD: POST-> http://localhost:5000/api
-```BODY: {
-        "name": "test",
-        "user_id" : 1
-        "track": "backend",
-        "slack_username": "test",
-        "email": "test"
-            }
-```
-<br>
-RESPONSE:  {"message": "new user successfully created"}
-<br>
+7. Open Postman, navigate to `http://localhost:5000/`, then you can test all endpoints with different methods like GET, POST.
 
-READ: Fetching details of a person. (http://localhost:5000/api/<user_id>)
-### Method GET: http://localhost:5000/api/1
-<br>
-RESPONSE :    
-```{"user_data":{    
-            "name": "test",
-            "user_id" : 1
-            "track": "backend",
-            "slack_username": "test",
-            "email": "test"
-                }
-        }
-```
-UPDATE: Updating an existing person  (http://localhost:5000/api/<user_id>)
-### Method PATCH : http://localhost:5000/api/1
-```BODY: {
-    "name": "test",
-    "user_id" : 1
-    "track": "backend",
-    "slack_username": "test",
-    "email": "test"
-        }
-```
-    Response : {"message": "user successfully Updated"}
+### Usage
 
-DELETE: Deleting an existing person   (http://localhost:5000/api/<user_id>)
-    ### Method DELETE: http://localhost:5000/api/<1>
-        Response : {"message": "user successfully deleted"}
+**CREATE:** Adding a new person. (http://localhost:5000/api)
+- **METHOD:** POST -> http://localhost:5000/api
 
-### Folder structure
-```
+   **BODY:**
+   ```json
+   {
+       "name": "test",
+       "user_id": 1,
+       "track": "backend",
+       "slack_username": "test",
+       "email": "test"
+   }
+   ```
+
+   **RESPONSE:**  `{"message": "new user successfully created"}`
+
+**READ:** Fetching details of a person. (http://localhost:5000/api/<user_id>)
+- **Method GET:** http://localhost:5000/api/1
+
+   **RESPONSE:**
+   ```json
+   {"user_data": {
+       "name": "test",
+       "user_id": 1,
+       "track": "backend",
+       "slack_username": "test",
+       "email": "test"
+       }
+   }
+   ```
+
+**UPDATE:** Updating an existing person (http://localhost:5000/api/<user_id>)
+- **Method PATCH:** http://localhost:5000/api/1
+
+   **BODY:**
+   ```json
+   {
+       "name": "test",
+       "user_id": 1,
+       "track": "backend",
+       "slack_username": "test",
+       "email": "test"
+   }
+   ```
+
+   **RESPONSE:** `{"message": "user successfully Updated"}`
+
+**DELETE:** Deleting an existing person (http://localhost:5000/api/<user_id>)
+- **Method DELETE:** http://localhost:5000/api/1
+
+   **RESPONSE:** `{"message": "user successfully deleted"}`
+
+### Folder Structure
+
+```plaintext
 HNG-10/
 │
 ├── resource/
@@ -123,7 +136,8 @@ HNG-10/
 ```
 
 ### UML Diagram
-```
+
+```plaintext
 --------------------------------------
 |               User                |
 --------------------------------------
@@ -139,3 +153,4 @@ HNG-10/
 | + delete_user(user_data: User)   |
 --------------------------------------
 ```
+
