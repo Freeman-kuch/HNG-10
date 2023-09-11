@@ -63,6 +63,7 @@ DELETE: Removing a person => http://localhost:5000//api/user_id
 
 
 ### Folder structure
+```
 HNG-10/
 │
 ├── resource/
@@ -82,5 +83,6 @@ HNG-10/
 ├── requirements.txt
 ├── wsgi.py
 └── README.md
+```
 
 ### UML Diagram
