@@ -76,7 +76,8 @@ class stage_2(Resource):
         Returns:
             A dictionary containing the user's information, wrapped in the 'user_data' key.
         """
-        user_data = user.find_user_by_name(name=name)
+        user_data = user.find_user_by_name(name)
+        print(user_data)
         return  user_data, 200
 
 

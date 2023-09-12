@@ -8,7 +8,6 @@ from db import db
 load_dotenv()
 
 app = Flask(__name__)
-print(os.getenv("DATABASE_URL"))
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 api = Api(app)
@@ -19,7 +18,7 @@ with app.app_context():
 
 
 api.add_resource(bio, "/api")
-api.add_resource(stage_2, "/api/<int:user_id>/", "/api/<str:name>")
+api.add_resource(stage_2, "/api/<string:name>")
 
 
 if __name__ == "__main__":

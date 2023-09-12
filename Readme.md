@@ -3,9 +3,9 @@
 ## Stage Two Task
 A REST API with Basic CRUD Operations
 - **CREATE:** Adding a new person => `/api`
-- **READ:** Fetching details of a person => `/api/user_id`
-- **UPDATE:** Modifying details of an existing person => `/api/user_id`
-- **DELETE:** Removing a person => `/api/user_id`
+- **READ:** Fetching details of a person => `/api/name`
+- **UPDATE:** Modifying details of an existing person => `/api/name`
+- **DELETE:** Removing a person => `/api/name`
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
@@ -75,8 +75,8 @@ A REST API with Basic CRUD Operations
 
    **RESPONSE:**  `{"message": "new user successfully created"}`
 
-**READ:** Fetching details of a person. (http://localhost:5000/api/<user_id>)
-- **Method GET:** http://localhost:5000/api/1
+**READ:** Fetching details of a person. (http://localhost:5000/api/<name>)
+- **Method GET:** http://localhost:5000/api/test
 
    **RESPONSE:**
    ```json
@@ -90,13 +90,13 @@ A REST API with Basic CRUD Operations
    }
    ```
 
-**UPDATE:** Updating an existing person (http://localhost:5000/api/<user_id>)
-- **Method PATCH:** http://localhost:5000/api/1
+**UPDATE:** Updating an existing person (http://localhost:5000/api/<name>)
+- **Method PATCH:** http://localhost:5000/api/test
 
    **BODY:**
    ```json
    {
-       "name": "test",
+       "name": "another test",
        "user_id": 1,
        "track": "backend",
        "slack_username": "test",
@@ -106,8 +106,8 @@ A REST API with Basic CRUD Operations
 
    **RESPONSE:** `{"message": "user successfully Updated"}`
 
-**DELETE:** Deleting an existing person (http://localhost:5000/api/<user_id>)
-- **Method DELETE:** http://localhost:5000/api/1
+**DELETE:** Deleting an existing person (http://localhost:5000/api/<name>)
+- **Method DELETE:** http://localhost:5000/api/another test
 
    **RESPONSE:** `{"message": "user successfully deleted"}`
 
@@ -147,7 +147,7 @@ HNG-10/
 | - slack_username: str            |
 | - email: str                     |
 --------------------------------------
-| + find_user_by_id(user_id: int)  |
+| + find_user_by_name(name: str)  |
 | + add_user(user_data: User)      |
 | + update_user()                  |
 | + delete_user(user_data: User)   |

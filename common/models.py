@@ -16,7 +16,7 @@ class user(db.Model):
 
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(20), nullable=False, unique=True)
-    track = db.Column(db.String(30), nullable=False)
+    track = db.Column(db.String(30), nullable=True)
     slack_username = db.Column(db.String(30), nullable=True)
     email = db.Column(db.String(50), nullable=True)
 
@@ -50,7 +50,16 @@ class user(db.Model):
         Raises:
             NotFound: If no user with the given name is found.
         """
-        return cls.query.get_or_404(name)
+
+        return cls.query.filter(cls.name==name).first_or_404()
+        # valid_name = name.strip().strip()
+        # if len(valid_name) == 1:
+        #     return cls.query.filter_by(name=name).one()
+        # else:
+        #     return cls.query.filter_by("".join(valid_name)).one()
+        
+
+        
 
     @classmethod
     def add_user(cls, user_data: 'user') -> None:
