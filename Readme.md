@@ -75,7 +75,7 @@ A REST API with Basic CRUD Operations
 
    **RESPONSE:**  `{"message": "new user successfully created"}`
 
-**READ:** Fetching details of a person. (http://localhost:5000/api/<name>)
+**READ:** Fetching details of a person. (http://localhost:5000/api/<string :name>)
 - **Method GET:** http://localhost:5000/api/test
 
    **RESPONSE:**
@@ -90,7 +90,7 @@ A REST API with Basic CRUD Operations
    }
    ```
 
-**UPDATE:** Updating an existing person (http://localhost:5000/api/<name>)
+**UPDATE:** Updating an existing person (http://localhost:5000/api/<string: name>)
 - **Method PATCH:** http://localhost:5000/api/test
 
    **BODY:**
@@ -106,7 +106,7 @@ A REST API with Basic CRUD Operations
 
    **RESPONSE:** `{"message": "user successfully Updated"}`
 
-**DELETE:** Deleting an existing person (http://localhost:5000/api/<name>)
+**DELETE:** Deleting an existing person (http://localhost:5000/api/<string: name>)
 - **Method DELETE:** http://localhost:5000/api/another test
 
    **RESPONSE:** `{"message": "user successfully deleted"}`
