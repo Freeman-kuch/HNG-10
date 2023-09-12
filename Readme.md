@@ -3,9 +3,9 @@
 ## Stage Two Task
 A REST API with Basic CRUD Operations
 - **CREATE:** Adding a new person => `/api`
-- **READ:** Fetching details of a person => `/api/name`
-- **UPDATE:** Modifying details of an existing person => `/api/name`
-- **DELETE:** Removing a person => `/api/name`
+- **READ:** Fetching details of a person => `/api/user_id`
+- **UPDATE:** Modifying details of an existing person => `/api/user_id`
+- **DELETE:** Removing a person => `/api/user_id`
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
