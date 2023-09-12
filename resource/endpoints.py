@@ -66,9 +66,9 @@ class bio(Resource):
 class stage_2(Resource):
         # ======   READ ==========
     @marshal_with(users_fields, envelope="user_data")
-    def get(self, user_id: int) -> Dict[str, Any]:
+    def get(self, name: str) -> Dict[str, Any]:
         """
-        Retrieves a user's information based on their user_id.
+        Retrieves a user's information based on their name.
 
         Args:
             name: The name of the user to retrieve information for.
@@ -76,21 +76,21 @@ class stage_2(Resource):
         Returns:
             A dictionary containing the user's information, wrapped in the 'user_data' key.
         """
-        user_data = user.find_user_by_id(user_id=user_id)
+        user_data = user.find_user_by_name(name=name)
         return  user_data, 200
 
 
-    def patch(self, user_id: int) -> dict:
+    def patch(self, name: str) -> dict:
         """
         Update the information of a user based on their name.
 
         Args:
-            user_id (int): The ID of the user to be updated.
+            name (str): The name of the user to be updated.
 
         Returns:
-            dict: A dictionary with the message "item successfully Updated" and the status code 201.
+            dict: A dictionary with the message "user successfully Updated" and the status code 201.
         """
-        update_data = user.find_user_by_id(user_id)
+        update_data = user.find_user_by_name(name)
         req_data = parser.parse_args()
 
         for key, value in req_data.items():
@@ -101,17 +101,17 @@ class stage_2(Resource):
         return {"message": "user successfully Updated"}, 202
 
 
-    def delete(self, user_id: int) -> dict:
+    def delete(self, name: str) -> dict:
         """
         Deletes a user's information based on their name.
 
         Args:
-            name (str): The ID of the user to be deleted.
+            name (str): The name of the user to be deleted.
 
         Returns:
-            dict: A dictionary with the message "item successfully deleted" and the status code 204.
+            dict: A dictionary with the message "user successfully deleted" and the status code 204.
         """
-        delete_data = user.find_user_by_id(user_id)
+        delete_data = user.find_user_by_name(name)
         user.delete_user(delete_data)
         return {"message": "user successfully deleted"}, 200
 

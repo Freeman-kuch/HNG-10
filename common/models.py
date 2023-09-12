@@ -36,21 +36,21 @@ class user(db.Model):
         """
         return cls.query.get_or_404(user_id)
 
-    # @classmethod
-    # def find_user_by_name(cls, name: str) -> 'user':
-    #     """
-    #     Finds a user by their name and returns the user object.
+    @classmethod
+    def find_user_by_name(cls, name: str) -> 'user':
+        """
+        Finds a user by their name and returns the user object.
 
-    #     Args:
-    #         name (str): The name of the user to find.
+        Args:
+            name (str): The name of the user to find.
 
-    #     Returns:
-    #         User: The user object.
+        Returns:
+            User: The user object.
 
-    #     Raises:
-    #         NotFound: If no user with the given name is found.
-    #     """
-    #     return cls.query.get_or_404(name)
+        Raises:
+            NotFound: If no user with the given name is found.
+        """
+        return cls.query.get_or_404(name)
 
     @classmethod
     def add_user(cls, user_data: 'user') -> None:
