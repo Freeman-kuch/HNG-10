@@ -5,9 +5,9 @@ from common.models import user
 parser = reqparse.RequestParser()
 parser.add_argument("name", type=str, required=True, help="This field can't be left blank")
 parser.add_argument("user_id", type=int, required=False, help="This field can't be left blank")
-parser.add_argument("track", type=str, required=True, help="This field can't be left blank")
-parser.add_argument("slack_username", type=str, required=True, help="This field can't be left blank")
-parser.add_argument("email", type=str)
+parser.add_argument("track", type=str, required=False, help="This field can't be left blank")
+parser.add_argument("slack_username", type=str, required=False, help="This field can't be left blank")
+parser.add_argument("email", type=str, required=False)
 
 users_fields = {
     "user_id": fields.Integer,
@@ -27,7 +27,7 @@ class bio(Resource):
     Creates a new instance of the `items` class with the extracted data and adds it to the database.
     Returns a success message if the new user is added successfully.
     """
-    
+    @marshal_with(users_fields, envelope="new_data")
     def post(self) -> dict:
         """
         Handles the HTTP POST request.
@@ -59,12 +59,11 @@ class bio(Resource):
         except ValueError as exc:
             return {"error": "Failed"}, 400
 
-        return {"message": "new user successfully created"}, 201
+        return user_data, 201
 
 
 
 class stage_2(Resource):
-        # ======   READ ==========
     @marshal_with(users_fields, envelope="user_data")
     def get(self, name: str) -> Dict[str, Any]:
         """
@@ -84,6 +83,7 @@ class stage_2(Resource):
             return "Something is wrong with your Query", 400
 
 
+    @marshal_with(users_fields, envelope="user_updated")
     def patch(self, name: str) -> dict:
         """
         Update the information of a user based on their name.
@@ -103,13 +103,14 @@ class stage_2(Resource):
 
             user.update_user()
 
-            return {"message": "user successfully Updated"}, 202
+            return update_data, 202
 
         except Exception as e:
             return {"message":"Something is wrong with your Query"}, 400
 
 
 
+    @marshal_with(users_fields, envelope="user_deleted")
     def delete(self, name: str) -> dict:
         """
         Deletes a user's information based on their name.
@@ -123,9 +124,7 @@ class stage_2(Resource):
         try:
             delete_data = user.find_user_by_name(name)
             user.delete_user(delete_data)
-            return {"message": "user successfully deleted"}, 200
+            return delete_data, 200
         except Exception as e:
             return {"message":"Something is wrong with your Query"}, 400
-
-
 
