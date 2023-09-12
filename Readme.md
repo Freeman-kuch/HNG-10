@@ -66,14 +66,26 @@ A REST API with Basic CRUD Operations
    ```json
    {
        "name": "test",
-       "user_id": 1,
-       "track": "backend",
-       "slack_username": "test",
-       "email": "test"
+       // the following fields are optional
+      // "user_id": 1,
+      // "track": "backend",
+       //"slack_username": "test",
+      // "email": "test"
    }
-   ```
+  ```
+   **RESPONSE:**  
+   ```json
+    "new_user": {
+        {
+         "name": "test",
+         "user_id": 1,
+         "track": "null",
+         "slack_username": "null",
+         "email": "null"
+      }
+    }
+  ```
 
-   **RESPONSE:**  `{"message": "new user successfully created"}`
 
 **READ:** Fetching details of a person. (http://localhost:5000/api/<string :name>)
 - **Method GET:** http://localhost:5000/api/test
@@ -83,9 +95,9 @@ A REST API with Basic CRUD Operations
    {"user_data": {
        "name": "test",
        "user_id": 1,
-       "track": "backend",
-       "slack_username": "test",
-       "email": "test"
+       "track": "null",
+       "slack_username": "null",
+       "email": "null"
        }
    }
    ```
@@ -104,12 +116,34 @@ A REST API with Basic CRUD Operations
    }
    ```
 
-   **RESPONSE:** `{"message": "user successfully Updated"}`
+   **RESPONSE:**  
+   ```json
+    "user_updated": {
+        {
+         "name": "another test",
+         "user_id": 1,
+         "track": "backend",
+         "slack_username": "test",
+         "email": "test"
+      }
+    }
+  ```
 
 **DELETE:** Deleting an existing person (http://localhost:5000/api/<string: name>)
 - **Method DELETE:** http://localhost:5000/api/another test
 
-   **RESPONSE:** `{"message": "user successfully deleted"}`
+   **RESPONSE:**  
+   ```json
+    "user_deleted": {
+        {
+         "name": "another test",
+         "user_id": 1,
+         "track": "backend",
+         "slack_username": "test",
+         "email": "test"
+      }
+    }
+  ```
 
 ### Folder Structure
 
