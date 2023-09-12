@@ -18,7 +18,7 @@ with app.app_context():
 
 
 api.add_resource(bio, "/api")
-api.add_resource(stage_2, "/api/<string:name>")
+api.add_resource(stage_2, "/api/<int:user_id>")
 
 
 if __name__ == "__main__":

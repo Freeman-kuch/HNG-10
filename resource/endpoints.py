@@ -56,46 +56,47 @@ class bio(Resource):
         new_user = user(**user_data)
         try:
             user.add_user(new_user)
+            user_db_data = user.find_user_by_name(user_data["name"])
+            return user_db_data, 201
         except ValueError as exc:
             return {"error": "Failed"}, 400
 
-        return user_data, 201
 
 
 
 class stage_2(Resource):
     @marshal_with(users_fields, envelope="user_data")
-    def get(self, name: str) -> Dict[str, Any]:
+    def get(self, user_id: int) -> Dict[str, Any]:
         """
-        Retrieves a user's information based on their name.
+        Retrieves a user's information based on their user_id.
 
         Args:
-            name: The name of the user to retrieve information for.
+            user_id: The user_id of the user to retrieve information for.
 
         Returns:
             A dictionary containing the user's information, wrapped in the 'user_data' key.
         """
         try:
-            user_data = user.find_user_by_name(name)
+            user_data = user.find_user_by_id(user_id)
             return  user_data, 200
 
         except Exception as e:
-            return "Something is wrong with your Query", 400
+            return {"message":"Something is wrong with your Query"}, 400
 
 
     @marshal_with(users_fields, envelope="user_updated")
-    def patch(self, name: str) -> dict:
+    def patch(self, user_id: int) -> dict:
         """
-        Update the information of a user based on their name.
+        Update the information of a user based on theiruser_id.
 
         Args:
-            name (str): The name of the user to be updated.
+            user_id (str): The name of the user to be updated.
 
         Returns:
             dict: A dictionary with the message "user successfully Updated" and the status code 201.
         """
         try:
-            update_data = user.find_user_by_name(name)
+            update_data = user.find_user_by_id(user_id)
             req_data = parser.parse_args()
 
             for key, value in req_data.items():
@@ -111,18 +112,18 @@ class stage_2(Resource):
 
 
     @marshal_with(users_fields, envelope="user_deleted")
-    def delete(self, name: str) -> dict:
+    def delete(self, user_id: int) -> dict:
         """
-        Deletes a user's information based on their name.
+        Deletes a user's information based on their user_id.
 
         Args:
-            name (str): The name of the user to be deleted.
+            user_id (int): The name of the user to be deleted.
 
         Returns:
             dict: A dictionary with the message "user successfully deleted" and the status code 204.
         """
         try:
-            delete_data = user.find_user_by_name(name)
+            delete_data = user.find_user_by_id(user_id)
             user.delete_user(delete_data)
             return delete_data, 204
         except Exception as e:

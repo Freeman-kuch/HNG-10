@@ -34,7 +34,7 @@ class user(db.Model):
         Raises:
             NotFound: If no user with the given ID is found.
         """
-        return cls.query.get_or_404(user_id)
+        return cls.query.filter(cls.user_id==user_id).first_or_404()
 
     @classmethod
     def find_user_by_name(cls, name: str) -> 'user':

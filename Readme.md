@@ -87,8 +87,8 @@ A REST API with Basic CRUD Operations
   ```
 
 
-**READ:** Fetching details of a person. (http://localhost:5000/api/<string :name>)
-- **Method GET:** http://localhost:5000/api/test
+**READ:** Fetching details of a person. (http://localhost:5000/api/<int: user_id>)
+- **Method GET:** http://localhost:5000/api/1
 
    **RESPONSE:**
    ```json
@@ -102,8 +102,8 @@ A REST API with Basic CRUD Operations
    }
    ```
 
-**UPDATE:** Updating an existing person (http://localhost:5000/api/<string: name>)
-- **Method PATCH:** http://localhost:5000/api/test
+**UPDATE:** Updating an existing person (http://localhost:5000/api/<int: user_id>)
+- **Method PATCH:** http://localhost:5000/api/1
 
    **BODY:**
    ```json
@@ -129,8 +129,8 @@ A REST API with Basic CRUD Operations
     }
   ```
 
-**DELETE:** Deleting an existing person (http://localhost:5000/api/<string: name>)
-- **Method DELETE:** http://localhost:5000/api/another test
+**DELETE:** Deleting an existing person (http://localhost:5000/api/<int: user_id>)
+- **Method DELETE:** http://localhost:5000/api/1
 
    **RESPONSE:**  
    ```json
@@ -181,7 +181,7 @@ HNG-10/
 | - slack_username: str            |
 | - email: str                     |
 --------------------------------------
-| + find_user_by_name(name: str)  |
+| + find_user_by_user_id(user_id: int)  |
 | + add_user(user_data: User)      |
 | + update_user()                  |
 | + delete_user(user_data: User)   |
