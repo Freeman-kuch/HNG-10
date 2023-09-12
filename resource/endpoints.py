@@ -76,9 +76,12 @@ class stage_2(Resource):
         Returns:
             A dictionary containing the user's information, wrapped in the 'user_data' key.
         """
-        user_data = user.find_user_by_name(name)
-        print(user_data)
-        return  user_data, 200
+        try:
+            user_data = user.find_user_by_name(name)
+            return  user_data, 200
+
+        except Exception as e:
+            return "Something is wrong with your Query", 400
 
 
     def patch(self, name: str) -> dict:
@@ -91,15 +94,20 @@ class stage_2(Resource):
         Returns:
             dict: A dictionary with the message "user successfully Updated" and the status code 201.
         """
-        update_data = user.find_user_by_name(name)
-        req_data = parser.parse_args()
+        try:
+            update_data = user.find_user_by_name(name)
+            req_data = parser.parse_args()
 
-        for key, value in req_data.items():
-            setattr(update_data, key, value)
+            for key, value in req_data.items():
+                setattr(update_data, key, value)
 
-        user.update_user()
+            user.update_user()
 
-        return {"message": "user successfully Updated"}, 202
+            return {"message": "user successfully Updated"}, 202
+
+        except Exception as e:
+            return {"message":"Something is wrong with your Query"}, 400
+
 
 
     def delete(self, name: str) -> dict:
@@ -112,8 +120,12 @@ class stage_2(Resource):
         Returns:
             dict: A dictionary with the message "user successfully deleted" and the status code 204.
         """
-        delete_data = user.find_user_by_name(name)
-        user.delete_user(delete_data)
-        return {"message": "user successfully deleted"}, 200
+        try:
+            delete_data = user.find_user_by_name(name)
+            user.delete_user(delete_data)
+            return {"message": "user successfully deleted"}, 200
+        except Exception as e:
+            return {"message":"Something is wrong with your Query"}, 400
+
 
 
