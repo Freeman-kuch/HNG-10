@@ -103,7 +103,7 @@ class stage_2(Resource):
 
             user.update_user()
 
-            return update_data, 202
+            return update_data, 200
 
         except Exception as e:
             return {"message":"Something is wrong with your Query"}, 400
@@ -124,7 +124,7 @@ class stage_2(Resource):
         try:
             delete_data = user.find_user_by_name(name)
             user.delete_user(delete_data)
-            return delete_data, 200
+            return delete_data, 204
         except Exception as e:
             return {"message":"Something is wrong with your Query"}, 400
 
