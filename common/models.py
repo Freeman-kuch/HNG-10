@@ -15,7 +15,7 @@ class user(db.Model):
     __tablename__ = 'user'
 
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(20), nullable=False, unique=True)
+    name = db.Column(db.String(20), nullable=False)
     track = db.Column(db.String(30), nullable=True)
     slack_username = db.Column(db.String(30), nullable=True)
     email = db.Column(db.String(50), nullable=True)
